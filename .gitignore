@@ -6,8 +6,8 @@ obj/
 
 Migrations/
 publish/
-README/
-README.md
+# README/
+# README.md
 
 ResidentDB.db
 ResidentDB.db-shm
