@@ -63,3 +63,14 @@ class BankAccount:
     
     def __str__(self):
         return f"{self.name}の残高: {self.balance}円"
+
+
+#テストコード
+if __name__ == "__main__":
+    a = BankAccount("Kiki", 300)
+    b = BankAccount("Lala", 10)
+
+    a.transfer(b, 300)
+
+    print(a)
+    print(b)
