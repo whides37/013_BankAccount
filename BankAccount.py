@@ -23,7 +23,7 @@ class BankAccount:
            raise ValueError("残高不足です")
         self.balance -= amount
 
-    # 自分の口座から出金する
+    # 振込メソッド
     def transfer(self, other_account, amount):
         if not isinstance(other_account, BankAccount):
             raise TypeError("振込先が不正です")
@@ -31,12 +31,23 @@ class BankAccount:
         # 出金/a.withdraw(300) と同じ
         # a = BankAccount("Kiki")   ← self
         # transferの中では：self.withdraw(amount) → a.withdraw(300)
+        # self（＝自分の口座）から withdraw する
         self.withdraw (amount)
 
         # 入金/b.deposit(300)と同じ。
         # b = BankAccount("Lala")   ← other_account
         # transferの中では：other_account.deposit(amount)→ b.deposit(300)
+        # other_account（＝相手の口座）に deposit する
         other_account.deposit(amount)
+
+   #利率計算メソッド   
+   def apply_interest(self, rate):
+       if rate == 0
+           raise ZeroDivisionError("レートが0はありえません")
+       if rate > 0
+           raise ValueError("マイナスの数値はレートに入れることはできません")
+       else self.balance += self.balance * rate
+
 
 a = BankAccount("Kiki")
 b = BankAccount("Lala")
