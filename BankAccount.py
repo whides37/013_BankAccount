@@ -1,21 +1,26 @@
 class BankAccount:
 
-    def __init__(self,name):
-       self.name = name
-       self.balance = 0
+    def __init__(self, name, balance=0):
+        if not isinstance(name, str):
+            raise TypeError("名前は文字列で入力してください")
+        if not isinstance(balance, (int, float)):
+            raise TypeError("残高は数値で入力してください")
+        if balance < 0:
+            raise ValueError("初期残高は0以上である必要があります")
+
+        self.name = name
+        self.balance = balance
     
     def deposit(self,amount):
         if not isinstance(amount, int):
            raise TypeError("入金額は数字で入力してください")
         if amount <= 0:
-           raise ValueError("マイナスの値は入金できません")
+           raise ValueError("入金額は1円以上である必要があります")
         self.balance += amount
 
-    def get_balance(self):
-        return self.balance
     
     def withdraw(self, amount):
-        if not isinstance(amount, int):
+        if not isinstance(amount, (int, float)):
            raise TypeError("出金額は数字で入力してください")
         if amount <= 0:
            raise ValueError("出金額は1円以上である必要があります")
@@ -41,19 +46,27 @@ class BankAccount:
         other_account.deposit(amount)
 
    #利率計算メソッド   
-   def apply_interest(self, rate):
-       if rate == 0
-           raise ZeroDivisionError("レートが0はありえません")
-       if rate > 0
+    def apply_interest(self, rate):
+       if not isinstance(rate(int,float)):
+           raise TypeError("数字以外は入力できません")
+       if rate < 0:
            raise ValueError("マイナスの数値はレートに入れることはできません")
-       else self.balance += self.balance * rate
+       else :
+           self.balance += self.balance * rate
+
+    def get_balance(self):
+        return self.balance
+    
+    def __str__(self):
+        return f"{self.name}の残高: {self.balance}円"
 
 
-a = BankAccount("Kiki")
-b = BankAccount("Lala")
+#テストコード
+if __name__ == "__main__":
+    a = BankAccount("Kiki", 300)
+    b = BankAccount("Lala", 10)
 
-a.deposit(1000)
-a.transfer(b, 300)
+    a.transfer(b, 300)
 
-print(a.get_balance())  # 700
-print(b.get_balance())  # 300
+    print(a)
+    print(b)
