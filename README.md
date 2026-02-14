@@ -8,16 +8,16 @@
 - わからないところはAIのサポートに頼る。
 - ただし、すべてのコードをノートに再度書き写して、コードの理解を深める。
 
-### 仕様 ###
+## 仕様
 
-# クラス
+### クラス
     BankAccount
 
-# 属性
+### 属性
     name（口座名義）
     balance（初期値0）
 
-# メソッド
+### メソッド
     deposit(amount)
         0以下なら ValueError
         正常なら残高加算
@@ -35,7 +35,7 @@
 
 ## 追加仕様
 
-# 利率計算メソッド
+### 利率計算メソッド
     def apply_interest(rate):
         rateが0なら ZeroDivisionError をわざと起こす処理を入れる
         rateが負なら ValueError
