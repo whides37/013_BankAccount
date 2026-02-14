@@ -30,6 +30,10 @@ class BankAccount:
 
     # 振込メソッド
     def transfer(self, other_account, amount):
+        #振込先が BankAccount 型じゃないときのエラー　例：a.transfer("Lala", 300)これは 型が間違っている。口座番号があってない場合はValueError
+        # a.transfer(b, 300)
+        # b が BankAccount でなければ TypeError
+        # b が BankAccount ならOK
         if not isinstance(other_account, BankAccount):
             raise TypeError("振込先が不正です")
         
